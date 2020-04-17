@@ -14,9 +14,9 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.3;
 
-    @media #{$mq-1000-up}{
+    @include breakpoint(desktop){
         padding: 1.5rem;
-    }
+    } 
 }
 
 main {
@@ -26,22 +26,25 @@ main {
     max-width: 1200px;
     margin: 0 auto;
 
-    @media #{$mq-1000-up}{
-        display: flex;
+    @include breakpoint(desktop){
+        
         padding: 1.5rem;
+    }
+    @include breakpoint(laptop){
+        display: flex;
     }
 }
 
 .content {
     
-    @media #{$mq-1000-up}{
+    @include breakpoint(desktop){
         flex: 3;
     }
 }
 
 aside {
 
-    @media #{$mq-1000-up}{
+    @include breakpoint(desktop){
         flex: 1;
     }
 }

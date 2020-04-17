@@ -1,10 +1,13 @@
+@import "node_modules/bootstrap/scss/bootstrap";
 @import "variables";
 @import "colors";
-@import "global";
+@import "mixins";
 @import "typography";
 
-@import "node_modules/bootstrap/scss/bootstrap";
+@import "global";
+
+
 
 body{
     background: $primaryColor;
-}
+}  

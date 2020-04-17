@@ -12,6 +12,8 @@ const sasslint = require('gulp-sass-lint');
 const cache = require('gulp-cached');
 const notify = require('gulp-notify');
 const beeper = require('beeper');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
 
 const files = { 
   scssPath: 'app/scss/**/*.scss',
@@ -26,7 +28,7 @@ function buildStyles() {
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(sourcemaps.write())
-    .pipe(dest('dist'))
+    .pipe(dest('dist/css'))
     .pipe(browsersync.reload({ stream: true }));
 }
 
@@ -38,7 +40,7 @@ function buildJs(){
       ])
       .pipe(concat('all.js'))
       .pipe(uglify())
-      .pipe(dest('dist'))
+      .pipe(dest('dist/js'))
       .pipe(browsersync.reload({ stream: true }));
 }
 
@@ -120,6 +122,6 @@ function images() {
 // Export commands.
 exports.default = parallel(browserSync, watchFiles); // $ gulp
 exports.sass = buildStyles; // $ gulp sass
-exports.sass = buildJs; // $ gulp js
-exports.watch = watchFiles; // $ gulp watch
-exports.build = series(buildStyles); // $ gulp build
+exports.js = buildJs; // $ gulp js
+//exports.watch = watchFiles; // $ gulp watch
+//exports.build = series(buildStyles); // $ gulp build
